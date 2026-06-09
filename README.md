@@ -1,6 +1,6 @@
 # 📊 Laporan Praktikum Lanjutan: Analisis Performa Penjualan E-commerce
 
-**Nama:** [Mochamad Rafa Firbiansya]  
+**Nama:** Mochamad Rafa Firbiansya  
 **Kelas:** XI RPL 4  
 **Mata Kuliah:** Analisis dan Visualisasi Data  
 **Tanggal:** Juni 2026  
