@@ -1,74 +1,65 @@
 # 📊 Laporan Praktikum: Analisis Performa Penjualan E-commerce
 
 **Nama:** [Tulis Nama Lengkap Kamu]  
+**Kelas:** XI RPL 4  
 **Mata Kuliah:** Analisis dan Visualisasi Data  
 **Tanggal:** Juni 2026  
-**Dataset:** ecommerce_sales_data.csv
+**Dataset:** data_praktikum_analisis_data.xlsx (150 transaksi)
 
 ---
 
 ## 1. Business Question
 
-- Produk mana yang termasuk **underperformer** (harga tinggi tapi volume penjualan rendah)?
-- Bagaimana segmentasi pelanggan menggunakan **RFM Analysis**?
+- Kategori produk mana yang termasuk underperformer?
+- Bagaimana segmentasi pelanggan menggunakan RFM?
 - Kategori mana yang paling efisien dalam penggunaan anggaran iklan?
-- Apakah peningkatan Ad_Budget berpengaruh signifikan terhadap Total_Sales?
-- Seberapa besar pengaruh Ad_Budget terhadap penjualan?
-
----
+- Apakah peningkatan Ad_Budget di atas median menghasilkan peningkatan Total_Sales yang signifikan?
+- Seberapa besar pengaruh Ad_Budget terhadap Total_Sales?
 
 ## 2. Data Wrangling
 
-- Dataset berisi 350 transaksi e-commerce.
-- Dilakukan pembersihan data (menghapus data yang hilang pada kolom Ad_Budget).
-- Total data setelah cleaning: 340 baris.
-
----
+- Dataset asli berisi **150 baris**.
+- Terdapat **7 missing values** pada kolom Total_Sales → baris tersebut dihapus.
+- Total data setelah cleaning: **143 baris**.
+- Kolom yang digunakan: Order_ID, CustomerID, Order_Date, Product_Category, Quantity, Price_Per_Unit, Ad_Budget, Total_Sales.
 
 ## 3. Insights
 
-### 3.1 Tren Penjualan Bulanan
-![Tren Penjualan](01_tren_penjualan_bulanan.png)
+### 3.1 Identifikasi Underperformer
+Kategori dengan harga rata-rata di atas keseluruhan tapi volume lebih rendah:
+- **Home Decor**, **Fashion**, dan **Electronics**
 
-### 3.2 Korelasi Variabel
-![Heatmap Korelasi](02_heatmap_korelasi.png)
+### 3.2 RFM Analysis
+- Jumlah pelanggan unik: **48**
+- Pelanggan terbaik (high monetary + recent): CustomerID **5015, 5008, 5035, 5014, 5044**
+- Banyak pelanggan dengan RFM Group **455** dan **555**
 
-### 3.3 Produk Underperformer (Tugas 1)
-![Scatter Underperformer](03_scatter_underperformer.png)
+### 3.3 Efisiensi Kategori
+Dari yang paling tidak efisien ke paling efisien:
+- **Gadget** (paling tidak efisien)
+- Home Decor
+- Fashion
+- Books
+- **Electronics** (paling efisien)
 
-**Temuan:** Produk seperti Laptop Gaming Pro, Drone, dan Sofa memiliki harga tinggi tetapi volume penjualan rendah.
+### 3.4 Uji Hipotesis
+- Median Ad_Budget: Rp 2.703.000
+- **Hasil: Tidak signifikan** (p-value = 0.674)
+- Kesimpulan: Di data ini, peningkatan Ad_Budget di atas median **tidak** menghasilkan Total_Sales yang signifikan lebih tinggi.
 
-### 3.4 RFM Analysis (Tugas 2)
-- Jumlah pelanggan: 100
-- Sekitar **30+ pelanggan** direkomendasikan mendapatkan voucher loyalitas.
-
-### 3.5 Efisiensi Kategori (Tugas 3)
-![Efisiensi Kategori](04_category_efficiency.png)
-
-### 3.6 Uji Hipotesis (Tugas 4)
-- Perbedaan Total_Sales antara kelompok Ad_Budget tinggi dan rendah **signifikan** (p-value < 0.05).
-
-### 3.7 Regresi Linear
-- Setiap kenaikan Rp1 Ad_Budget diprediksi menaikkan sales sebesar **Rp 10.56**
-- R² = 0.953
-
----
+### 3.5 Regresi Linear
+- Koefisien Ad_Budget: 0.096
+- **R² = 0.003** (sangat rendah)
+- Kesimpulan: Ad_Budget hampir tidak memiliki pengaruh terhadap Total_Sales pada dataset ini.
 
 ## 4. Recommendation
 
-1. Review harga dan promosi untuk produk underperformer.
-2. Berikan voucher loyalitas kepada pelanggan RFM tinggi.
-3. Realokasikan budget iklan ke kategori yang lebih efisien.
-4. Tingkatkan budget iklan secara bertahap karena terbukti berpengaruh positif.
+1. Fokuskan promosi dan diskon pada kategori **Gadget** karena efisiensinya paling rendah.
+2. Berikan perhatian khusus (voucher, early access) kepada pelanggan dengan RFM tinggi (5015, 5008, 5035, dll).
+3. Evaluasi kembali strategi iklan karena berdasarkan data, peningkatan Ad_Budget tidak terlalu berpengaruh terhadap penjualan.
+4. Lakukan analisis lebih dalam terhadap kategori Home Decor dan Fashion yang memiliki harga tinggi tapi volume rendah.
 
----
+## 5. File yang Disertakan
 
-## File yang Disertakan
-
-- `ecommerce_sales_data.csv` (Dataset)
-- 5 file visualisasi (PNG)
-- `praktikum_ecommerce_analysis.py` (Script Python)
-
----
-
-**Catatan:** Laporan ini dibuat mengikuti struktur yang diminta dosen.
+- `data_praktikum_analisis_data.xlsx` (Dataset asli)
+- `README.md` (Laporan ini)
